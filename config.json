@@ -1,0 +1,32 @@
+{
+    "modules": [
+        "splash",
+        "intro",
+        "intro2",
+        "intro3",
+        "login",
+        "register",
+        "dashboard",
+        "detail_product",
+        "cart_product",
+        "checkout_product",
+        "category_product",
+        "main_navigation",
+        "order_detail",
+        "wishlist",
+        "profile",
+        "dashboard_seller",
+        "main_navigation_seller",
+        "product_seller",
+        "add_product_seller"
+    ],
+    "module_directory_name": "module",
+    "experimental_mode": false,
+    "learning_mode": false,
+    "unfreezed": true,
+    "use_cubit": false,
+    "ignore_core_generator_for_directories": [
+        "lib/model",
+        "lib/models"
+    ]
+}
