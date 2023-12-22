@@ -1,3 +1,4 @@
+import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:fic_7_ecommerce/core/color.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => CategoriesBloc(),
+          ),
+          BlocProvider(
+            create: (context) => BannersBloc(),
           ),
         ],
         child: MaterialApp(

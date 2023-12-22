@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_controller.dart';
+import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +24,7 @@ class DashboardController extends State<DashboardView> {
     });
     context.read<CategoriesBloc>().add(const CategoriesEvent.getCategories());
     context.read<ProductsBloc>().add(const ProductsEvent.getAll());
+    context.read<BannersBloc>().add(const BannersEvent.getBanners());
     super.initState();
   }
 
@@ -30,6 +33,9 @@ class DashboardController extends State<DashboardView> {
     scrollController.dispose();
     super.dispose();
   }
+
+  int currentIndex = 0;
+  final CarouselController carouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
