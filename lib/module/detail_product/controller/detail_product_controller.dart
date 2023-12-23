@@ -1,14 +1,23 @@
+import 'package:fic_7_ecommerce/bloc/product_details/product_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import '../../../bloc/add_review/add_review_bloc.dart';
+import '../../../data/models/request/review_request_model.dart';
 import '../view/detail_product_view.dart';
 
 class DetailProductController extends State<DetailProductView> {
   static late DetailProductController instance;
   late DetailProductView view;
 
+  bool shouldShowDialog = true;
   @override
   void initState() {
     instance = this;
+    context
+        .read<ProductDetailsBloc>()
+        .add(ProductDetailsEvent.getProductDetails(widget.productId));
     super.initState();
   }
 
@@ -18,116 +27,112 @@ class DetailProductController extends State<DetailProductView> {
   @override
   Widget build(BuildContext context) => widget.build(context, this);
 
-  List menuList = [
-    {
-      "label": "Restaurants",
-      "icon": Icons.restaurant,
-    },
-    {
-      "label": "Hotel",
-      "icon": Icons.hotel,
-    },
-    {
-      "label": "Shoppings",
-      "icon": Icons.shopping_bag,
-    },
-    {
-      "label": "Hospitals",
-      "icon": Icons.local_hospital,
-    },
-    {
-      "label": "Schools",
-      "icon": Icons.school,
-    },
-  ];
-
-  List places = [
-    {
-      "photo": "https://picsum.photos/1000",
-      "rating": 4.4,
-      "name": "Ubud Villa",
-      "location": "Jakarta, Indonesia",
-      "price": 246,
-      "distance": 10,
-    },
-    {
-      "photo": "https://picsum.photos/1001",
-      "rating": 4.7,
-      "name": "Taman Sari Villa",
-      "location": "Bali, Indonesia",
-      "price": 278,
-      "distance": 20,
-    },
-    {
-      "photo": "https://picsum.photos/1002",
-      "rating": 4.2,
-      "name": "Nusa Penida Villa",
-      "location": "Nusa Penida, Indonesia",
-      "price": 312,
-      "distance": 30,
-    },
-    {
-      "photo": "https://picsum.photos/1003",
-      "rating": 4.6,
-      "name": "Amankila Villa",
-      "location": "Bali, Indonesia",
-      "price": 356,
-      "distance": 140,
-    },
-    {
-      "photo": "https://picsum.photos/1004",
-      "rating": 4.8,
-      "name": "Legian Villa",
-      "location": "Seminyak, Indonesia",
-      "price": 389,
-      "distance": 50,
-    },
-    {
-      "photo": "https://picsum.photos/1005",
-      "rating": 4.3,
-      "name": "Lombok Villa",
-      "location": "Gili Trawangan, Indonesia",
-      "price": 411,
-      "distance": 60,
-    },
-    {
-      "photo": "https://picsum.photos/1006",
-      "rating": 4.9,
-      "name": "Canggu Villa",
-      "location": "Bali, Indonesia",
-      "price": 466,
-      "distance": 40,
-    },
-    {
-      "photo": "https://picsum.photos/1007",
-      "rating": 4.1,
-      "name": "Raja Ampat Villa",
-      "location": "Raja Ampat, Indonesia",
-      "price": 511,
-      "distance": 50,
-    },
-    {
-      "photo": "https://picsum.photos/1008",
-      "rating": 4.5,
-      "name": "Sarangan Villa",
-      "location": "Sarangan, Indonesia",
-      "price": 537,
-      "distance": 100,
-    },
-    {
-      "photo": "https://picsum.photos/1009",
-      "rating": 4.0,
-      "name": "Lovina Villa",
-      "location": "Lovina, Indonesia",
-      "price": 611,
-      "distance": 20,
-    }
-  ];
-
   bool isSlideUp = false;
   updateSlideUp(bool value) async {
     setState(() {
       isSlideUp = value;
     });
+  }
+
+  Future<void> refreshData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    // ignore: use_build_context_synchronously
+    context
+        .read<ProductDetailsBloc>()
+        .add(ProductDetailsEvent.getProductDetails(widget.productId));
+  }
+
+  void showReviewDialog(BuildContext context) {
+    if (shouldShowDialog != false) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          double rating = 0.0;
+          TextEditingController commentController = TextEditingController();
+          return BlocConsumer<AddReviewBloc, AddReviewState>(
+            listener: (context, state) {
+              // state.maybeWhen(
+              //   orElse: () {},
+              //   loaded: (data) {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (_) => DetailProductView(
+              //           productId: widget.productId,
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // );
+            },
+            builder: (context, state) {
+              return AlertDialog(
+                backgroundColor: Colors.white,
+                title: const Text("Review Product"),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("You haven't reviewed this product yet."),
+                    const SizedBox(height: 16.0),
+                    const Text("Rate the product:"),
+                    RatingBar.builder(
+                      initialRating: rating,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      itemSize: 24.0,
+                      onRatingUpdate: (newRating) {
+                        rating = newRating;
+                      },
+                    ),
+                    const SizedBox(height: 16.0),
+                    const Text("Add a comment:"),
+                    TextField(
+                      controller: commentController,
+                      maxLines: 3,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      shouldShowDialog = false;
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Not Now"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      ReviewRequestModel reviewRequest = ReviewRequestModel(
+                        comment: commentController.text,
+                        rating: rating,
+                        productId: widget.productId,
+                      );
+
+                      context
+                          .read<AddReviewBloc>()
+                          .add(AddReviewEvent.create(reviewRequest));
+
+                      shouldShowDialog = false;
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Submit"),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+      );
+    }
   }
 }

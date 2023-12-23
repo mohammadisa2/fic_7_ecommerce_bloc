@@ -92,7 +92,7 @@ class CategoryProductView extends StatefulWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    DetailProductView(product: item),
+                                    DetailProductView(productId: item.id!),
                               ),
                             ),
                             child: Column(

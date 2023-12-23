@@ -331,7 +331,7 @@ class DashboardView extends StatefulWidget {
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     DetailProductView(
-                                                        product: item),
+                                                        productId: item.id!),
                                               ),
                                             ),
                                             child: Column(

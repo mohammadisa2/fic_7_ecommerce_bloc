@@ -1,4 +1,6 @@
+import 'package:fic_7_ecommerce/bloc/add_review/add_review_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
+import 'package:fic_7_ecommerce/bloc/product_details/product_details_bloc.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:fic_7_ecommerce/core/color.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +41,12 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => BannersBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ProductDetailsBloc(),
+          ),
+          BlocProvider(
+            create: (context) => AddReviewBloc(),
           ),
         ],
         child: MaterialApp(

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:fic_7_ecommerce/data/models/response/product_details_response_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../../core/variables.dart';
@@ -46,6 +47,26 @@ class ProductRemoteDatasource {
 
     if (response.statusCode == 200) {
       return Right(ProductsResponseModel.fromJson(response.body));
+    } else {
+      return const Left('Server Error, please contact admin');
+    }
+  }
+
+  Future<Either<String, ProductDetailsResponseModel>> getProductsDetail(
+      int productId) async {
+    final token = await AuthLocalDatasource().getToken();
+    final headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token'
+    };
+    final response = await http.get(
+      Uri.parse('${Variables.baseUrl}/api/products/$productId'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      return Right(ProductDetailsResponseModel.fromJson(response.body));
     } else {
       return const Left('Server Error, please contact admin');
     }
