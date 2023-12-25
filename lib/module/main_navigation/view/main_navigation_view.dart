@@ -1,5 +1,7 @@
+import 'package:fic_7_ecommerce/bloc/my_orders/my_orders_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../controller/main_navigation_controller.dart';
 
 class MainNavigationView extends StatefulWidget {
@@ -21,11 +23,14 @@ class MainNavigationView extends StatefulWidget {
       child: Scaffold(
         body: IndexedStack(
           index: controller.selectedIndex,
-          children: const [
-            DashboardView(),
-            OrderDetailView(),
-            WishlistView(),
-            ProfileView(),
+          children: [
+            const DashboardView(),
+            BlocProvider(
+              create: (context) => MyOrdersBloc(),
+              child: const OrderDetailView(),
+            ),
+            const WishlistView(),
+            const ProfileView(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

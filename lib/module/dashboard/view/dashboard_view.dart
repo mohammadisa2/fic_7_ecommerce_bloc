@@ -125,8 +125,7 @@ class DashboardView extends StatefulWidget {
                                     loaded: (model) {
                                       return Builder(builder: (context) {
                                         List images = model.data!
-                                            .map((banner) =>
-                                                banner.bannerUrl ?? "")
+                                            .map((banner) => banner.bannerUrl)
                                             .toList();
 
                                         return Column(
@@ -140,8 +139,11 @@ class DashboardView extends StatefulWidget {
                                                 autoPlay: true,
                                                 enlargeCenterPage: true,
                                                 onPageChanged: (index, reason) {
-                                                  controller.currentIndex =
-                                                      index;
+                                                  // ignore: invalid_use_of_protected_member
+                                                  controller.setState(() {
+                                                    controller.currentIndex =
+                                                        index;
+                                                  });
                                                 },
                                               ),
                                               items: images.map((imageUrl) {
