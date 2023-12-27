@@ -10,7 +10,6 @@ part 'my_orders_bloc.freezed.dart';
 class MyOrdersBloc extends Bloc<MyOrdersEvent, MyOrdersState> {
   MyOrdersBloc() : super(const MyOrdersState.initial()) {
     on<FetchOrders>((event, emit) async {
-      // Lakukan sesuatu di sini, misalnya pemanggilan fungsi fetchOrders
       final result = await MyOrderRemoteDatasource().fetchOrders();
       emit(result.fold(
         (error) => MyOrdersState.error(error),

@@ -18,20 +18,6 @@ class OrderDetailView extends StatefulWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.black,
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    size: 24.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
               Row(
                 children: [
                   const Text(
@@ -136,6 +122,12 @@ class OrderDetailView extends StatefulWidget {
                               itemBuilder: (context, itemIndex) {
                                 var item = order['order_items'][itemIndex];
                                 var productName = item['product']['name'];
+                                var sellerName = item['seller']['name'];
+                                var imageUrl = item['product']['image_url'];
+                                var categoryName =
+                                    item['product']['category']['name'];
+                                var quantity = item['quantity'];
+                                var subPrice = item['sub_price'];
                                 return Container(
                                   padding: const EdgeInsets.all(12.0),
                                   margin: const EdgeInsets.all(8.0),
@@ -154,77 +146,114 @@ class OrderDetailView extends StatefulWidget {
                                       ),
                                     ),
                                   ),
-                                  child: Row(
+                                  child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        width: 90,
-                                        height: 90,
-                                        decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                              "https://images.unsplash.com/photo-1643681154051-c43090a0fadb?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                                            ),
-                                            fit: BoxFit.cover,
+                                      Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons
+                                                    .store_mall_directory_outlined,
+                                                size: 24.0,
+                                              ),
+                                              const SizedBox(
+                                                width: 12.0,
+                                              ),
+                                              Text(
+                                                "$sellerName",
+                                                style: const TextStyle(
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(
-                                              8.0,
+                                          const Divider(
+                                            color: Colors.black38,
+                                          ),
+                                          const SizedBox(
+                                            height: 12.0,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 90,
+                                            height: 90,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  "$imageUrl",
+                                                ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                Radius.circular(
+                                                  8.0,
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 12.0,
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              productName,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                          const SizedBox(
+                                            width: 12.0,
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  productName,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: const TextStyle(
+                                                    fontSize: 14.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 4.0,
+                                                ),
+                                                Text(
+                                                  "Category: $categoryName",
+                                                  style: const TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Colors.black54,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 4.0,
+                                                ),
+                                                Text(
+                                                  "Quantity: $quantity",
+                                                  style: const TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Colors.black54,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 4.0,
+                                                ),
+                                                Text(
+                                                  "Price: $subPrice",
+                                                  style: const TextStyle(
+                                                    fontSize: 14.0,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            const SizedBox(
-                                              height: 4.0,
-                                            ),
-                                            const Text(
-                                              "Smartwatch",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.black54,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 4.0,
-                                            ),
-                                            const Text(
-                                              "Quantity: 1",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.black54,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 4.0,
-                                            ),
-                                            const Text(
-                                              "Price: 1.00",
-                                              style: TextStyle(
-                                                fontSize: 14.0,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),

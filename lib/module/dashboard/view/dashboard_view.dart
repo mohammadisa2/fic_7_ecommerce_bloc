@@ -2,8 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/add_review/add_review_bloc.dart';
 import '../../../bloc/banners/banners_bloc.dart';
 import '../../../bloc/categories/categories_bloc.dart';
+import '../../../bloc/must_review/must_review_bloc.dart';
+import '../../../bloc/product_details/product_details_bloc.dart';
 import '../../../bloc/products/products_bloc.dart';
 import '../controller/dashboard_controller.dart';
 
@@ -332,8 +335,27 @@ class DashboardView extends StatefulWidget {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    DetailProductView(
-                                                        productId: item.id!),
+                                                    MultiBlocProvider(
+                                                  providers: [
+                                                    BlocProvider<
+                                                        ProductDetailsBloc>(
+                                                      create: (context) =>
+                                                          ProductDetailsBloc(),
+                                                    ),
+                                                    BlocProvider<AddReviewBloc>(
+                                                      create: (context) =>
+                                                          AddReviewBloc(),
+                                                    ),
+                                                    BlocProvider<
+                                                        MustReviewBloc>(
+                                                      create: (context) =>
+                                                          MustReviewBloc(),
+                                                    ),
+                                                  ],
+                                                  child: DetailProductView(
+                                                    productId: item.id!,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                             child: Column(

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:fic_7_ecommerce/data/models/request/review_request_model.dart';
 import 'package:fic_7_ecommerce/data/models/response/add_review_response_model.dart';
+import 'package:fic_7_ecommerce/data/models/response/must_review_response_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../../core/variables.dart';
@@ -23,6 +24,26 @@ class ReviewRemoteDatasource {
 
     if (response.statusCode == 201) {
       return Right(AddReviewResponseModel.fromJson(response.body));
+    } else {
+      return const Left('Server error');
+    }
+  }
+
+  Future<Either<String, MustReviewResponseModel>> mustReview(
+      int productId) async {
+    final token = await AuthLocalDatasource().getToken();
+    final headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+    final response = await http.get(
+      Uri.parse('${Variables.baseUrl}/api/must-reviews?product_id=$productId'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      return Right(MustReviewResponseModel.fromJson(response.body));
     } else {
       return const Left('Server error');
     }

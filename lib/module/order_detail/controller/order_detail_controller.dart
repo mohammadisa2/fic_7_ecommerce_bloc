@@ -37,6 +37,7 @@ class OrderDetailController extends State<OrderDetailView> {
   //           .map((item) => {
   //                 'id': item.id,
   //                 'quantity': item.quantity,
+  //                 'sub_price': item.subPrice,
   //                 'product': {
   //                   'id': item.product.id,
   //                   'name': item.product.name,
@@ -73,6 +74,7 @@ class OrderDetailController extends State<OrderDetailView> {
   //           .map((item) => {
   //                 'id': item.id,
   //                 'quantity': item.quantity,
+  //                 'sub_price': item.subPrice,
   //                 'product': {
   //                   'id': item.product.id,
   //                   'name': item.product.name,
@@ -111,17 +113,23 @@ class OrderDetailController extends State<OrderDetailView> {
               .map((item) => {
                     'id': item.id,
                     'quantity': item.quantity,
+                    'sub_price': item.subPrice,
                     'product': {
                       'id': item.product.id,
                       'name': item.product.name,
                       'description': item.product.description,
                       'price': item.product.price,
                       'image_url': item.product.imageUrl,
-                      'category_id': item.product.categoryId,
-                      'seller_id': item.product.sellerId,
-                      'created_at': item.product.createdAt,
-                      'updated_at': item.product.updatedAt,
-                    }
+                      'category': {
+                        'id': item.product.category.id,
+                        'name': item.product.category.name,
+                        'description': item.product.category.description,
+                      },
+                    },
+                    "seller": {
+                      "id": item.seller.id,
+                      "name": item.seller.name,
+                    },
                   })
               .toList(),
         });
@@ -129,6 +137,22 @@ class OrderDetailController extends State<OrderDetailView> {
     }
 
     return filteredOrders;
+  }
+
+  bool hasDuplicateSeller(List<dynamic> orderItems, int currentItemIndex) {
+    var currentSellerName = orderItems[currentItemIndex]['seller']['name'];
+
+    for (int i = 0; i < currentItemIndex; i++) {
+      var previousSellerName = orderItems[i]['seller']['name'];
+
+      // Jika ada duplikat, kembalikan true
+      if (currentSellerName == previousSellerName) {
+        return true;
+      }
+    }
+
+    // Tidak ada duplikat ditemukan
+    return false;
   }
 
   bool showOngoing = true;

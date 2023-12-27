@@ -23,7 +23,7 @@ class ProfileView extends StatefulWidget {
                     CircleAvatar(
                       backgroundColor: Colors.black,
                       child: IconButton(
-                        onPressed: () => Navigator.pop(context),
+                        onPressed: () {},
                         icon: const Icon(
                           Icons.arrow_back,
                           size: 24.0,

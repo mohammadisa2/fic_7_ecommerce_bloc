@@ -2,22 +2,28 @@ import 'package:fic_7_ecommerce/bloc/product_details/product_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../../bloc/add_review/add_review_bloc.dart';
-import '../../../data/models/request/review_request_model.dart';
+import '../../../bloc/must_review/must_review_bloc.dart';
 import '../view/detail_product_view.dart';
 
 class DetailProductController extends State<DetailProductView> {
   static late DetailProductController instance;
   late DetailProductView view;
+  bool isReviewDialogShown = false;
 
-  bool shouldShowDialog = true;
+  late ProductDetailsBloc _productDetailsBloc;
+  late MustReviewBloc _mustReviewBloc;
+
   @override
   void initState() {
     instance = this;
-    context
-        .read<ProductDetailsBloc>()
+
+    _productDetailsBloc = context.read<ProductDetailsBloc>();
+    _productDetailsBloc
         .add(ProductDetailsEvent.getProductDetails(widget.productId));
+
+    _mustReviewBloc = context.read<MustReviewBloc>();
+    _mustReviewBloc.add(MustReviewEvent.mustReview(widget.productId));
+
     super.initState();
   }
 
@@ -40,99 +46,5 @@ class DetailProductController extends State<DetailProductView> {
     context
         .read<ProductDetailsBloc>()
         .add(ProductDetailsEvent.getProductDetails(widget.productId));
-  }
-
-  void showReviewDialog(BuildContext context) {
-    if (shouldShowDialog != false) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          double rating = 0.0;
-          TextEditingController commentController = TextEditingController();
-          return BlocConsumer<AddReviewBloc, AddReviewState>(
-            listener: (context, state) {
-              // state.maybeWhen(
-              //   orElse: () {},
-              //   loaded: (data) {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (_) => DetailProductView(
-              //           productId: widget.productId,
-              //         ),
-              //       ),
-              //     );
-              //   },
-              // );
-            },
-            builder: (context, state) {
-              return AlertDialog(
-                backgroundColor: Colors.white,
-                title: const Text("Review Product"),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("You haven't reviewed this product yet."),
-                    const SizedBox(height: 16.0),
-                    const Text("Rate the product:"),
-                    RatingBar.builder(
-                      initialRating: rating,
-                      minRating: 1,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      itemSize: 24.0,
-                      onRatingUpdate: (newRating) {
-                        rating = newRating;
-                      },
-                    ),
-                    const SizedBox(height: 16.0),
-                    const Text("Add a comment:"),
-                    TextField(
-                      controller: commentController,
-                      maxLines: 3,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      shouldShowDialog = false;
-                      Navigator.pop(context);
-                    },
-                    child: const Text("Not Now"),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      ReviewRequestModel reviewRequest = ReviewRequestModel(
-                        comment: commentController.text,
-                        rating: rating,
-                        productId: widget.productId,
-                      );
-
-                      context
-                          .read<AddReviewBloc>()
-                          .add(AddReviewEvent.create(reviewRequest));
-
-                      shouldShowDialog = false;
-                      Navigator.pop(context);
-                    },
-                    child: const Text("Submit"),
-                  ),
-                ],
-              );
-            },
-          );
-        },
-      );
-    }
   }
 }

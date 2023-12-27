@@ -1,10 +1,9 @@
 import 'package:fic_7_ecommerce/bloc/add_review/add_review_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
-import 'package:fic_7_ecommerce/bloc/my_orders/my_orders_bloc.dart';
+import 'package:fic_7_ecommerce/bloc/must_review/must_review_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/product_details/product_details_bloc.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:fic_7_ecommerce/core/color.dart';
-import 'package:fic_7_ecommerce/data/datasources/my_order_remote_datasource.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,10 +49,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => AddReviewBloc(),
           ),
-          // BlocProvider(
-          //   create: (context) => MyOrdersBloc(
-          //       myOrderRemoteDataSource: MyOrderRemoteDatasource()),
-          // ),
+          BlocProvider(
+            create: (context) => MustReviewBloc(),
+          ),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
