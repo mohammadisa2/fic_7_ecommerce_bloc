@@ -16,16 +16,24 @@ class DashboardController extends State<DashboardView> {
   void initState() {
     instance = this;
     scrollController = ScrollController();
-    scrollController.addListener(() {
-      if (scrollController.position.pixels ==
-          scrollController.position.maxScrollExtent) {
-        context.read<ProductsBloc>().add(const ProductsEvent.loadNextPage());
-      }
-    });
+    // scrollController.addListener(() {
+    //   if (scrollController.position.pixels ==
+    //       scrollController.position.maxScrollExtent) {
+    //     context.read<ProductsBloc>().add(const ProductsEvent.loadNextPage());
+    //   }
+    // });
     context.read<CategoriesBloc>().add(const CategoriesEvent.getCategories());
     context.read<ProductsBloc>().add(const ProductsEvent.getAll());
     context.read<BannersBloc>().add(const BannersEvent.getBanners());
     super.initState();
+  }
+
+  bool onScrollNotification(ScrollNotification notification) {
+    if (notification is ScrollEndNotification &&
+        scrollController.position.extentAfter == 0) {
+      context.read<ProductsBloc>().add(const ProductsEvent.loadNextPage());
+    }
+    return false;
   }
 
   @override

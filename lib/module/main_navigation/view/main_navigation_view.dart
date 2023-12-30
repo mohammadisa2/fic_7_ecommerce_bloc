@@ -1,7 +1,9 @@
+import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/my_orders/my_orders_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/add_favorite_product/add_favorite_product_bloc.dart';
 import '../controller/main_navigation_controller.dart';
 
 class MainNavigationView extends StatefulWidget {
@@ -24,7 +26,17 @@ class MainNavigationView extends StatefulWidget {
         body: IndexedStack(
           index: controller.selectedIndex,
           children: [
-            const DashboardView(),
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => AddFavoriteProductBloc(),
+                ),
+                BlocProvider(
+                  create: (context) => BannersBloc(),
+                ),
+              ],
+              child: const DashboardView(),
+            ),
             BlocProvider(
               create: (context) => MyOrdersBloc(),
               child: const OrderDetailView(),
