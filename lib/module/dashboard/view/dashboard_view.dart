@@ -1,4 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fic_7_ecommerce/bloc/add_favorite_product/add_favorite_product_bloc.dart';
+import 'package:fic_7_ecommerce/data/models/request/add_favorite_product_request_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -378,7 +380,7 @@ class DashboardView extends StatefulWidget {
                                                         ),
                                                       ),
                                                     ),
-                                                    child: const Stack(
+                                                    child: Stack(
                                                       children: [
                                                         Positioned(
                                                           right: 10,
@@ -386,11 +388,105 @@ class DashboardView extends StatefulWidget {
                                                           child: CircleAvatar(
                                                             backgroundColor:
                                                                 Colors.black,
-                                                            child: Icon(
-                                                              Icons
-                                                                  .favorite_border_outlined,
-                                                              color:
-                                                                  Colors.white,
+                                                            child: BlocConsumer<
+                                                                AddFavoriteProductBloc,
+                                                                AddFavoriteProductState>(
+                                                              builder: (context,
+                                                                  state) {
+                                                                print(
+                                                                    "Builder executed");
+                                                                return state
+                                                                    .maybeWhen(
+                                                                  orElse: () {
+                                                                    return IconButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        if (item
+                                                                            .isWishlist!) {
+                                                                          AddFavoriteProductRequestModel
+                                                                              request =
+                                                                              AddFavoriteProductRequestModel(productId: item.id!);
+
+                                                                          context
+                                                                              .read<AddFavoriteProductBloc>()
+                                                                              .add(
+                                                                                AddFavoriteProductEvent.delete(request),
+                                                                              );
+                                                                        } else {
+                                                                          AddFavoriteProductRequestModel
+                                                                              request =
+                                                                              AddFavoriteProductRequestModel(productId: item.id!);
+
+                                                                          context
+                                                                              .read<AddFavoriteProductBloc>()
+                                                                              .add(
+                                                                                AddFavoriteProductEvent.add(request),
+                                                                              );
+                                                                        }
+                                                                      },
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .favorite,
+                                                                        color: item.isWishlist!
+                                                                            ? Colors.red
+                                                                            : Colors.white,
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+                                                              },
+                                                              listener:
+                                                                  (context,
+                                                                      state) {
+                                                                print(
+                                                                    'Listener executed');
+                                                                state.maybeWhen(
+                                                                  deleted:
+                                                                      (data) {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      SnackBar(
+                                                                        content:
+                                                                            Text(data.message),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  loaded: (_) {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      const SnackBar(
+                                                                        content:
+                                                                            Text('Favorite product added successfully!'),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  errorDelete:
+                                                                      (message) {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      SnackBar(
+                                                                        content:
+                                                                            Text(message),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  error: () {
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
+                                                                        .showSnackBar(
+                                                                      const SnackBar(
+                                                                        content:
+                                                                            Text('Failed to add Favorite product. Please try again.'),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                  orElse: () {},
+                                                                );
+                                                              },
                                                             ),
                                                           ),
                                                         ),

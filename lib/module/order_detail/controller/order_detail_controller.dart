@@ -127,8 +127,8 @@ class OrderDetailController extends State<OrderDetailView> {
                       },
                     },
                     "seller": {
-                      "id": item.seller.id,
-                      "name": item.seller.name,
+                      "id": item.seller?.id,
+                      "name": item.seller?.name,
                     },
                   })
               .toList(),

@@ -130,55 +130,66 @@ class OrderDetailView extends StatefulWidget {
                                 var subPrice = item['sub_price'];
                                 return Container(
                                   padding: const EdgeInsets.all(12.0),
-                                  margin: const EdgeInsets.all(8.0),
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
                                   decoration: const BoxDecoration(
                                     color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x19000000),
-                                        blurRadius: 24,
-                                        offset: Offset(0, 11),
-                                      ),
-                                    ],
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                        8.0,
-                                      ),
-                                    ),
+                                    // boxShadow: [
+                                    //   BoxShadow(
+                                    //     color: Color(0x19000000),
+                                    //     blurRadius: 24,
+                                    //     offset: Offset(0, 11),
+                                    //   ),
+                                    // ],
+                                    // borderRadius: BorderRadius.only(
+                                    //   topLeft: Radius.circular(
+                                    //     8.0,
+                                    //   ),
+                                    //   topRight: Radius.circular(
+                                    //     8.0,
+                                    //   ),
+                                    //   bottomLeft: Radius.circular(
+                                    //     8.0,
+                                    //   ),
+                                    //   bottomRight: Radius.circular(
+                                    //     8.0,
+                                    //   ),
+                                    // ),
                                   ),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              const Icon(
-                                                Icons
-                                                    .store_mall_directory_outlined,
-                                                size: 24.0,
-                                              ),
-                                              const SizedBox(
-                                                width: 12.0,
-                                              ),
-                                              Text(
-                                                "$sellerName",
-                                                style: const TextStyle(
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold,
+                                      if (sellerName != null)
+                                        Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons
+                                                      .store_mall_directory_outlined,
+                                                  size: 24.0,
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                          const Divider(
-                                            color: Colors.black38,
-                                          ),
-                                          const SizedBox(
-                                            height: 12.0,
-                                          ),
-                                        ],
-                                      ),
+                                                const SizedBox(
+                                                  width: 12.0,
+                                                ),
+                                                Text(
+                                                  "$sellerName",
+                                                  style: const TextStyle(
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const Divider(
+                                              color: Colors.black38,
+                                            ),
+                                            const SizedBox(
+                                              height: 12.0,
+                                            ),
+                                          ],
+                                        ),
                                       Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,

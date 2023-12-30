@@ -88,10 +88,10 @@ class DetailProductView extends StatefulWidget {
                 );
               },
               loaded: (model) {
-                print(model.isHasReview);
                 SchedulerBinding.instance.addPostFrameCallback((_) {
                   if (model.isHasReview == true &&
                       !controller.isReviewDialogShown) {
+                    // print(model.isHasReview);
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -679,7 +679,7 @@ class DetailProductView extends StatefulWidget {
                                                                                 16.0,
                                                                             onRatingUpdate:
                                                                                 (rating) {
-                                                                              print(rating);
+                                                                              // print(rating);
                                                                             },
                                                                           ),
                                                                           const SizedBox(

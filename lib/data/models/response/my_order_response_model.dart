@@ -52,14 +52,14 @@ class OrderItem {
   int id;
   int quantity;
   String subPrice;
-  Seller seller;
+  Seller? seller;
   Product product;
 
   OrderItem({
     required this.id,
     required this.quantity,
     required this.subPrice,
-    required this.seller,
+    this.seller,
     required this.product,
   });
 
@@ -68,7 +68,7 @@ class OrderItem {
       id: json['id'],
       quantity: json['quantity'],
       subPrice: json['sub_price'],
-      seller: Seller.fromJson(json['seller']),
+      seller: json['seller'] != null ? Seller.fromJson(json['seller']) : null,
       product: Product.fromJson(json['product']),
     );
   }

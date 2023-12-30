@@ -39,6 +39,7 @@ class Product {
   String? description;
   int? price;
   String? imageProduct;
+  bool? isWishlist;
   int? sellerId;
   Category? category;
 
@@ -48,6 +49,7 @@ class Product {
     this.description,
     this.price,
     this.imageProduct,
+    this.isWishlist,
     this.sellerId,
     this.category,
   });
@@ -62,6 +64,7 @@ class Product {
         description: json["description"],
         price: json["price"],
         imageProduct: json["image_product"],
+        isWishlist: json["is_wishlist"],
         sellerId: json["seller_id"],
         category: json["category"] == null
             ? null
@@ -74,6 +77,7 @@ class Product {
         "description": description,
         "price": price,
         "image_product": imageProduct,
+        "is_wishlist": isWishlist,
         "seller_id": sellerId,
         "category": category?.toMap(),
       };
