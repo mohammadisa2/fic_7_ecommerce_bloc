@@ -8,6 +8,7 @@ import '../../../bloc/add_review/add_review_bloc.dart';
 import '../../../bloc/banners/banners_bloc.dart';
 import '../../../bloc/categories/categories_bloc.dart';
 import '../../../bloc/must_review/must_review_bloc.dart';
+import '../../../bloc/my_favorite_product/my_favorite_product_bloc.dart';
 import '../../../bloc/product_details/product_details_bloc.dart';
 import '../../../bloc/products/products_bloc.dart';
 import '../controller/dashboard_controller.dart';
@@ -319,15 +320,28 @@ class DashboardView extends StatefulWidget {
                                         content: Text(data.message),
                                       ),
                                     );
+                                    context
+                                        .read<ProductsBloc>()
+                                        .add(const ProductsEvent.refresh());
+                                    context.read<MyFavoriteProductBloc>().add(
+                                        const MyFavoriteProductEvent
+                                            .refreshMyFavProd());
                                   },
-                                  loaded: (data) =>
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                          'Favorite product added successfully!'),
-                                    ),
-                                  ),
+                                  loaded: (data) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Favorite product added successfully!',
+                                        ),
+                                      ),
+                                    );
+                                    context.read<MyFavoriteProductBloc>().add(
+                                        const MyFavoriteProductEvent
+                                            .refreshMyFavProd());
+                                    context
+                                        .read<ProductsBloc>()
+                                        .add(const ProductsEvent.refresh());
+                                  },
                                   errorDelete: (message) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(

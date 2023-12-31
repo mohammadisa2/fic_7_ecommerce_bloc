@@ -20,18 +20,21 @@ mixin _$MyFavoriteProductEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fetchMyFavProd,
+    required TResult Function() refreshMyFavProd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fetchMyFavProd,
+    TResult? Function()? refreshMyFavProd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fetchMyFavProd,
+    TResult Function()? refreshMyFavProd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$MyFavoriteProductEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchMyFavProd value) fetchMyFavProd,
+    required TResult Function(_RefreshMyFavProd value) refreshMyFavProd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult? Function(_RefreshMyFavProd value)? refreshMyFavProd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult Function(_RefreshMyFavProd value)? refreshMyFavProd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +121,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fetchMyFavProd,
+    required TResult Function() refreshMyFavProd,
   }) {
     return started();
   }
@@ -124,6 +131,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fetchMyFavProd,
+    TResult? Function()? refreshMyFavProd,
   }) {
     return started?.call();
   }
@@ -133,6 +141,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fetchMyFavProd,
+    TResult Function()? refreshMyFavProd,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -146,6 +155,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchMyFavProd value) fetchMyFavProd,
+    required TResult Function(_RefreshMyFavProd value) refreshMyFavProd,
   }) {
     return started(this);
   }
@@ -155,6 +165,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult? Function(_RefreshMyFavProd value)? refreshMyFavProd,
   }) {
     return started?.call(this);
   }
@@ -164,6 +175,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult Function(_RefreshMyFavProd value)? refreshMyFavProd,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -217,6 +229,7 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fetchMyFavProd,
+    required TResult Function() refreshMyFavProd,
   }) {
     return fetchMyFavProd();
   }
@@ -226,6 +239,7 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fetchMyFavProd,
+    TResult? Function()? refreshMyFavProd,
   }) {
     return fetchMyFavProd?.call();
   }
@@ -235,6 +249,7 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fetchMyFavProd,
+    TResult Function()? refreshMyFavProd,
     required TResult orElse(),
   }) {
     if (fetchMyFavProd != null) {
@@ -248,6 +263,7 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FetchMyFavProd value) fetchMyFavProd,
+    required TResult Function(_RefreshMyFavProd value) refreshMyFavProd,
   }) {
     return fetchMyFavProd(this);
   }
@@ -257,6 +273,7 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult? Function(_RefreshMyFavProd value)? refreshMyFavProd,
   }) {
     return fetchMyFavProd?.call(this);
   }
@@ -266,6 +283,7 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult Function(_RefreshMyFavProd value)? refreshMyFavProd,
     required TResult orElse(),
   }) {
     if (fetchMyFavProd != null) {
@@ -277,6 +295,114 @@ class _$FetchMyFavProdImpl implements _FetchMyFavProd {
 
 abstract class _FetchMyFavProd implements MyFavoriteProductEvent {
   const factory _FetchMyFavProd() = _$FetchMyFavProdImpl;
+}
+
+/// @nodoc
+abstract class _$$RefreshMyFavProdImplCopyWith<$Res> {
+  factory _$$RefreshMyFavProdImplCopyWith(_$RefreshMyFavProdImpl value,
+          $Res Function(_$RefreshMyFavProdImpl) then) =
+      __$$RefreshMyFavProdImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshMyFavProdImplCopyWithImpl<$Res>
+    extends _$MyFavoriteProductEventCopyWithImpl<$Res, _$RefreshMyFavProdImpl>
+    implements _$$RefreshMyFavProdImplCopyWith<$Res> {
+  __$$RefreshMyFavProdImplCopyWithImpl(_$RefreshMyFavProdImpl _value,
+      $Res Function(_$RefreshMyFavProdImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefreshMyFavProdImpl implements _RefreshMyFavProd {
+  const _$RefreshMyFavProdImpl();
+
+  @override
+  String toString() {
+    return 'MyFavoriteProductEvent.refreshMyFavProd()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreshMyFavProdImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() fetchMyFavProd,
+    required TResult Function() refreshMyFavProd,
+  }) {
+    return refreshMyFavProd();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? fetchMyFavProd,
+    TResult? Function()? refreshMyFavProd,
+  }) {
+    return refreshMyFavProd?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? fetchMyFavProd,
+    TResult Function()? refreshMyFavProd,
+    required TResult orElse(),
+  }) {
+    if (refreshMyFavProd != null) {
+      return refreshMyFavProd();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FetchMyFavProd value) fetchMyFavProd,
+    required TResult Function(_RefreshMyFavProd value) refreshMyFavProd,
+  }) {
+    return refreshMyFavProd(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult? Function(_RefreshMyFavProd value)? refreshMyFavProd,
+  }) {
+    return refreshMyFavProd?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FetchMyFavProd value)? fetchMyFavProd,
+    TResult Function(_RefreshMyFavProd value)? refreshMyFavProd,
+    required TResult orElse(),
+  }) {
+    if (refreshMyFavProd != null) {
+      return refreshMyFavProd(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshMyFavProd implements MyFavoriteProductEvent {
+  const factory _RefreshMyFavProd() = _$RefreshMyFavProdImpl;
 }
 
 /// @nodoc
