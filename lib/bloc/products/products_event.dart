@@ -6,5 +6,7 @@ class ProductsEvent with _$ProductsEvent {
   const factory ProductsEvent.getAll() = _GetAll;
   const factory ProductsEvent.getByCategory(int categoryId) = _GetByCategory;
   const factory ProductsEvent.refresh() = _RefreshProducts;
+  const factory ProductsEvent.refreshByCategory(int categoryId) =
+      _RefreshProductsByCategory;
   const factory ProductsEvent.loadNextPage() = _LoadNextPage;
 }

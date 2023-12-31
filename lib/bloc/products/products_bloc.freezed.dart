@@ -22,6 +22,7 @@ mixin _$ProductsEvent {
     required TResult Function() getAll,
     required TResult Function(int categoryId) getByCategory,
     required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
     required TResult Function() loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$ProductsEvent {
     TResult? Function()? getAll,
     TResult? Function(int categoryId)? getByCategory,
     TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
     TResult? Function()? loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +42,7 @@ mixin _$ProductsEvent {
     TResult Function()? getAll,
     TResult Function(int categoryId)? getByCategory,
     TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
     TResult Function()? loadNextPage,
     required TResult orElse(),
   }) =>
@@ -50,6 +53,8 @@ mixin _$ProductsEvent {
     required TResult Function(_GetAll value) getAll,
     required TResult Function(_GetByCategory value) getByCategory,
     required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
     required TResult Function(_LoadNextPage value) loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +64,7 @@ mixin _$ProductsEvent {
     TResult? Function(_GetAll value)? getAll,
     TResult? Function(_GetByCategory value)? getByCategory,
     TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult? Function(_LoadNextPage value)? loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +74,7 @@ mixin _$ProductsEvent {
     TResult Function(_GetAll value)? getAll,
     TResult Function(_GetByCategory value)? getByCategory,
     TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) =>
@@ -134,6 +141,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() getAll,
     required TResult Function(int categoryId) getByCategory,
     required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
     required TResult Function() loadNextPage,
   }) {
     return started();
@@ -146,6 +154,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? getAll,
     TResult? Function(int categoryId)? getByCategory,
     TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
     TResult? Function()? loadNextPage,
   }) {
     return started?.call();
@@ -158,6 +167,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? getAll,
     TResult Function(int categoryId)? getByCategory,
     TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
     TResult Function()? loadNextPage,
     required TResult orElse(),
   }) {
@@ -174,6 +184,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetAll value) getAll,
     required TResult Function(_GetByCategory value) getByCategory,
     required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
     required TResult Function(_LoadNextPage value) loadNextPage,
   }) {
     return started(this);
@@ -186,6 +198,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_GetAll value)? getAll,
     TResult? Function(_GetByCategory value)? getByCategory,
     TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult? Function(_LoadNextPage value)? loadNextPage,
   }) {
     return started?.call(this);
@@ -198,6 +211,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_GetAll value)? getAll,
     TResult Function(_GetByCategory value)? getByCategory,
     TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) {
@@ -254,6 +268,7 @@ class _$GetAllImpl implements _GetAll {
     required TResult Function() getAll,
     required TResult Function(int categoryId) getByCategory,
     required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
     required TResult Function() loadNextPage,
   }) {
     return getAll();
@@ -266,6 +281,7 @@ class _$GetAllImpl implements _GetAll {
     TResult? Function()? getAll,
     TResult? Function(int categoryId)? getByCategory,
     TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
     TResult? Function()? loadNextPage,
   }) {
     return getAll?.call();
@@ -278,6 +294,7 @@ class _$GetAllImpl implements _GetAll {
     TResult Function()? getAll,
     TResult Function(int categoryId)? getByCategory,
     TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
     TResult Function()? loadNextPage,
     required TResult orElse(),
   }) {
@@ -294,6 +311,8 @@ class _$GetAllImpl implements _GetAll {
     required TResult Function(_GetAll value) getAll,
     required TResult Function(_GetByCategory value) getByCategory,
     required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
     required TResult Function(_LoadNextPage value) loadNextPage,
   }) {
     return getAll(this);
@@ -306,6 +325,7 @@ class _$GetAllImpl implements _GetAll {
     TResult? Function(_GetAll value)? getAll,
     TResult? Function(_GetByCategory value)? getByCategory,
     TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult? Function(_LoadNextPage value)? loadNextPage,
   }) {
     return getAll?.call(this);
@@ -318,6 +338,7 @@ class _$GetAllImpl implements _GetAll {
     TResult Function(_GetAll value)? getAll,
     TResult Function(_GetByCategory value)? getByCategory,
     TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) {
@@ -401,6 +422,7 @@ class _$GetByCategoryImpl implements _GetByCategory {
     required TResult Function() getAll,
     required TResult Function(int categoryId) getByCategory,
     required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
     required TResult Function() loadNextPage,
   }) {
     return getByCategory(categoryId);
@@ -413,6 +435,7 @@ class _$GetByCategoryImpl implements _GetByCategory {
     TResult? Function()? getAll,
     TResult? Function(int categoryId)? getByCategory,
     TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
     TResult? Function()? loadNextPage,
   }) {
     return getByCategory?.call(categoryId);
@@ -425,6 +448,7 @@ class _$GetByCategoryImpl implements _GetByCategory {
     TResult Function()? getAll,
     TResult Function(int categoryId)? getByCategory,
     TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
     TResult Function()? loadNextPage,
     required TResult orElse(),
   }) {
@@ -441,6 +465,8 @@ class _$GetByCategoryImpl implements _GetByCategory {
     required TResult Function(_GetAll value) getAll,
     required TResult Function(_GetByCategory value) getByCategory,
     required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
     required TResult Function(_LoadNextPage value) loadNextPage,
   }) {
     return getByCategory(this);
@@ -453,6 +479,7 @@ class _$GetByCategoryImpl implements _GetByCategory {
     TResult? Function(_GetAll value)? getAll,
     TResult? Function(_GetByCategory value)? getByCategory,
     TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult? Function(_LoadNextPage value)? loadNextPage,
   }) {
     return getByCategory?.call(this);
@@ -465,6 +492,7 @@ class _$GetByCategoryImpl implements _GetByCategory {
     TResult Function(_GetAll value)? getAll,
     TResult Function(_GetByCategory value)? getByCategory,
     TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) {
@@ -526,6 +554,7 @@ class _$RefreshProductsImpl implements _RefreshProducts {
     required TResult Function() getAll,
     required TResult Function(int categoryId) getByCategory,
     required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
     required TResult Function() loadNextPage,
   }) {
     return refresh();
@@ -538,6 +567,7 @@ class _$RefreshProductsImpl implements _RefreshProducts {
     TResult? Function()? getAll,
     TResult? Function(int categoryId)? getByCategory,
     TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
     TResult? Function()? loadNextPage,
   }) {
     return refresh?.call();
@@ -550,6 +580,7 @@ class _$RefreshProductsImpl implements _RefreshProducts {
     TResult Function()? getAll,
     TResult Function(int categoryId)? getByCategory,
     TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
     TResult Function()? loadNextPage,
     required TResult orElse(),
   }) {
@@ -566,6 +597,8 @@ class _$RefreshProductsImpl implements _RefreshProducts {
     required TResult Function(_GetAll value) getAll,
     required TResult Function(_GetByCategory value) getByCategory,
     required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
     required TResult Function(_LoadNextPage value) loadNextPage,
   }) {
     return refresh(this);
@@ -578,6 +611,7 @@ class _$RefreshProductsImpl implements _RefreshProducts {
     TResult? Function(_GetAll value)? getAll,
     TResult? Function(_GetByCategory value)? getByCategory,
     TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult? Function(_LoadNextPage value)? loadNextPage,
   }) {
     return refresh?.call(this);
@@ -590,6 +624,7 @@ class _$RefreshProductsImpl implements _RefreshProducts {
     TResult Function(_GetAll value)? getAll,
     TResult Function(_GetByCategory value)? getByCategory,
     TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) {
@@ -602,6 +637,169 @@ class _$RefreshProductsImpl implements _RefreshProducts {
 
 abstract class _RefreshProducts implements ProductsEvent {
   const factory _RefreshProducts() = _$RefreshProductsImpl;
+}
+
+/// @nodoc
+abstract class _$$RefreshProductsByCategoryImplCopyWith<$Res> {
+  factory _$$RefreshProductsByCategoryImplCopyWith(
+          _$RefreshProductsByCategoryImpl value,
+          $Res Function(_$RefreshProductsByCategoryImpl) then) =
+      __$$RefreshProductsByCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int categoryId});
+}
+
+/// @nodoc
+class __$$RefreshProductsByCategoryImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$RefreshProductsByCategoryImpl>
+    implements _$$RefreshProductsByCategoryImplCopyWith<$Res> {
+  __$$RefreshProductsByCategoryImplCopyWithImpl(
+      _$RefreshProductsByCategoryImpl _value,
+      $Res Function(_$RefreshProductsByCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryId = null,
+  }) {
+    return _then(_$RefreshProductsByCategoryImpl(
+      null == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RefreshProductsByCategoryImpl implements _RefreshProductsByCategory {
+  const _$RefreshProductsByCategoryImpl(this.categoryId);
+
+  @override
+  final int categoryId;
+
+  @override
+  String toString() {
+    return 'ProductsEvent.refreshByCategory(categoryId: $categoryId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RefreshProductsByCategoryImpl &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, categoryId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RefreshProductsByCategoryImplCopyWith<_$RefreshProductsByCategoryImpl>
+      get copyWith => __$$RefreshProductsByCategoryImplCopyWithImpl<
+          _$RefreshProductsByCategoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getAll,
+    required TResult Function(int categoryId) getByCategory,
+    required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
+    required TResult Function() loadNextPage,
+  }) {
+    return refreshByCategory(categoryId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getAll,
+    TResult? Function(int categoryId)? getByCategory,
+    TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
+    TResult? Function()? loadNextPage,
+  }) {
+    return refreshByCategory?.call(categoryId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAll,
+    TResult Function(int categoryId)? getByCategory,
+    TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
+    TResult Function()? loadNextPage,
+    required TResult orElse(),
+  }) {
+    if (refreshByCategory != null) {
+      return refreshByCategory(categoryId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetAll value) getAll,
+    required TResult Function(_GetByCategory value) getByCategory,
+    required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
+    required TResult Function(_LoadNextPage value) loadNextPage,
+  }) {
+    return refreshByCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAll value)? getAll,
+    TResult? Function(_GetByCategory value)? getByCategory,
+    TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
+    TResult? Function(_LoadNextPage value)? loadNextPage,
+  }) {
+    return refreshByCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetAll value)? getAll,
+    TResult Function(_GetByCategory value)? getByCategory,
+    TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
+    TResult Function(_LoadNextPage value)? loadNextPage,
+    required TResult orElse(),
+  }) {
+    if (refreshByCategory != null) {
+      return refreshByCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshProductsByCategory implements ProductsEvent {
+  const factory _RefreshProductsByCategory(final int categoryId) =
+      _$RefreshProductsByCategoryImpl;
+
+  int get categoryId;
+  @JsonKey(ignore: true)
+  _$$RefreshProductsByCategoryImplCopyWith<_$RefreshProductsByCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -646,6 +844,7 @@ class _$LoadNextPageImpl implements _LoadNextPage {
     required TResult Function() getAll,
     required TResult Function(int categoryId) getByCategory,
     required TResult Function() refresh,
+    required TResult Function(int categoryId) refreshByCategory,
     required TResult Function() loadNextPage,
   }) {
     return loadNextPage();
@@ -658,6 +857,7 @@ class _$LoadNextPageImpl implements _LoadNextPage {
     TResult? Function()? getAll,
     TResult? Function(int categoryId)? getByCategory,
     TResult? Function()? refresh,
+    TResult? Function(int categoryId)? refreshByCategory,
     TResult? Function()? loadNextPage,
   }) {
     return loadNextPage?.call();
@@ -670,6 +870,7 @@ class _$LoadNextPageImpl implements _LoadNextPage {
     TResult Function()? getAll,
     TResult Function(int categoryId)? getByCategory,
     TResult Function()? refresh,
+    TResult Function(int categoryId)? refreshByCategory,
     TResult Function()? loadNextPage,
     required TResult orElse(),
   }) {
@@ -686,6 +887,8 @@ class _$LoadNextPageImpl implements _LoadNextPage {
     required TResult Function(_GetAll value) getAll,
     required TResult Function(_GetByCategory value) getByCategory,
     required TResult Function(_RefreshProducts value) refresh,
+    required TResult Function(_RefreshProductsByCategory value)
+        refreshByCategory,
     required TResult Function(_LoadNextPage value) loadNextPage,
   }) {
     return loadNextPage(this);
@@ -698,6 +901,7 @@ class _$LoadNextPageImpl implements _LoadNextPage {
     TResult? Function(_GetAll value)? getAll,
     TResult? Function(_GetByCategory value)? getByCategory,
     TResult? Function(_RefreshProducts value)? refresh,
+    TResult? Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult? Function(_LoadNextPage value)? loadNextPage,
   }) {
     return loadNextPage?.call(this);
@@ -710,6 +914,7 @@ class _$LoadNextPageImpl implements _LoadNextPage {
     TResult Function(_GetAll value)? getAll,
     TResult Function(_GetByCategory value)? getByCategory,
     TResult Function(_RefreshProducts value)? refresh,
+    TResult Function(_RefreshProductsByCategory value)? refreshByCategory,
     TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) {

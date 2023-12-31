@@ -4,7 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:fic_7_ecommerce/core.dart';
 
+import '../../../bloc/add_favorite_product/add_favorite_product_bloc.dart';
+import '../../../bloc/add_review/add_review_bloc.dart';
+import '../../../bloc/must_review/must_review_bloc.dart';
+import '../../../bloc/my_favorite_product/my_favorite_product_bloc.dart';
+import '../../../bloc/product_details/product_details_bloc.dart';
 import '../../../bloc/products/products_bloc.dart';
+import '../../../data/models/request/add_favorite_product_request_model.dart';
 import '../controller/category_product_controller.dart';
 
 class CategoryProductView extends StatefulWidget {
@@ -63,109 +69,215 @@ class CategoryProductView extends StatefulWidget {
               const SizedBox(
                 height: 20.0,
               ),
-              BlocBuilder<ProductsBloc, ProductsState>(
-                builder: (context, state) {
-                  return state.maybeWhen(
-                    orElse: () {
-                      return const Center(child: CircularProgressIndicator());
-                    },
-                    loading: () {
-                      return const Center(child: CircularProgressIndicator());
-                    },
-                    loaded: (model) {
-                      return GridView.builder(
-                        padding: EdgeInsets.zero,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 1.0 * 0.8,
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 25,
-                          crossAxisSpacing: 25,
+              BlocListener<AddFavoriteProductBloc, AddFavoriteProductState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    deleted: (data) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(data.message),
                         ),
-                        itemCount: model.data!.length,
-                        shrinkWrap: true,
-                        physics: const ScrollPhysics(),
-                        itemBuilder: (BuildContext context, int index) {
-                          var item = model.data![index];
-                          return GestureDetector(
-                            onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    DetailProductView(productId: item.id!),
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    height: 160.0,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                          "${item.imageProduct}",
-                                        ),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(
-                                          20.0,
-                                        ),
-                                      ),
-                                    ),
-                                    child: const Stack(
-                                      children: [
-                                        Positioned(
-                                          right: 10,
-                                          top: 10,
-                                          child: CircleAvatar(
-                                            backgroundColor: Colors.black,
-                                            child: Icon(
-                                              Icons.favorite_border_outlined,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 4.0,
-                                ),
-                                Text(
-                                  "${item.name}",
-                                  style: const TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 4.0,
-                                ),
-                                Text(
-                                  "${item.category!.name}",
-                                  style: const TextStyle(
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 4.0,
-                                ),
-                                Text(
-                                  "Rp. ${item.price}",
-                                  style: const TextStyle(
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
+                      );
+                      context
+                          .read<ProductsBloc>()
+                          .add(ProductsEvent.refreshByCategory(id));
+                      context
+                          .read<MyFavoriteProductBloc>()
+                          .add(const MyFavoriteProductEvent.refreshMyFavProd());
+                    },
+                    loaded: (data) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Favorite product added successfully!',
+                          ),
+                        ),
+                      );
+                      context
+                          .read<MyFavoriteProductBloc>()
+                          .add(const MyFavoriteProductEvent.refreshMyFavProd());
+                      context
+                          .read<ProductsBloc>()
+                          .add(ProductsEvent.refreshByCategory(id));
+                    },
+                    errorDelete: (message) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(message),
+                        ),
                       );
                     },
+                    error: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                              'Failed to add Favorite product. Please try again.'),
+                        ),
+                      );
+                    },
+                    orElse: () {},
                   );
                 },
+                child: BlocBuilder<ProductsBloc, ProductsState>(
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      loaded: (model) {
+                        return GridView.builder(
+                          padding: EdgeInsets.zero,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1.0 * 0.8,
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 25,
+                            crossAxisSpacing: 25,
+                          ),
+                          itemCount: model.data!.length,
+                          shrinkWrap: true,
+                          physics: const ScrollPhysics(),
+                          itemBuilder: (BuildContext context, int index) {
+                            var item = model.data![index];
+                            return GestureDetector(
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MultiBlocProvider(
+                                    providers: [
+                                      BlocProvider<ProductDetailsBloc>(
+                                        create: (context) =>
+                                            ProductDetailsBloc(),
+                                      ),
+                                      BlocProvider<AddReviewBloc>(
+                                        create: (context) => AddReviewBloc(),
+                                      ),
+                                      BlocProvider<MustReviewBloc>(
+                                        create: (context) => MustReviewBloc(),
+                                      ),
+                                    ],
+                                    child: DetailProductView(
+                                      productId: item.id!,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      height: 160.0,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                            "${item.imageProduct}",
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(
+                                            20.0,
+                                          ),
+                                        ),
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            right: 10,
+                                            top: 10,
+                                            child: CircleAvatar(
+                                              backgroundColor: Colors.black,
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  if (item.isWishlist!) {
+                                                    AddFavoriteProductRequestModel
+                                                        request =
+                                                        AddFavoriteProductRequestModel(
+                                                            productId:
+                                                                item.id!);
+
+                                                    context
+                                                        .read<
+                                                            AddFavoriteProductBloc>()
+                                                        .add(
+                                                          AddFavoriteProductEvent
+                                                              .delete(request),
+                                                        );
+                                                  } else {
+                                                    AddFavoriteProductRequestModel
+                                                        request =
+                                                        AddFavoriteProductRequestModel(
+                                                      productId: item.id!,
+                                                    );
+
+                                                    context
+                                                        .read<
+                                                            AddFavoriteProductBloc>()
+                                                        .add(
+                                                          AddFavoriteProductEvent
+                                                              .add(
+                                                            request,
+                                                          ),
+                                                        );
+                                                  }
+                                                },
+                                                icon: Icon(
+                                                  Icons.favorite,
+                                                  color: item.isWishlist!
+                                                      ? Colors.red
+                                                      : Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4.0,
+                                  ),
+                                  Text(
+                                    "${item.name}",
+                                    style: const TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4.0,
+                                  ),
+                                  Text(
+                                    "${item.category!.name}",
+                                    style: const TextStyle(
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 4.0,
+                                  ),
+                                  Text(
+                                    "Rp. ${item.price}",
+                                    style: const TextStyle(
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      orElse: () {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                      loading: () {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ],
           ),

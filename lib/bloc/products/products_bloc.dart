@@ -36,6 +36,16 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       );
     });
 
+    on<_RefreshProductsByCategory>((event, emit) async {
+      emit(const _Loading());
+      final result = await ProductRemoteDatasource()
+          .getProductsByCategory(event.categoryId);
+      result.fold(
+        (l) => emit(_Error(l)),
+        (r) => emit(_Loaded(r)),
+      );
+    });
+
     on<_LoadNextPage>((event, emit) async {
       if (state is _Loaded) {
         final currentState = state as _Loaded;
