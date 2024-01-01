@@ -1,3 +1,4 @@
+import 'package:fic_7_ecommerce/bloc/add_cart/add_cart_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/add_favorite_product/add_favorite_product_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/my_favorite_product/my_favorite_product_bloc.dart';
 import 'package:fic_7_ecommerce/core.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => CartBloc(),
+          ),
+          BlocProvider(
+            create: (context) => AddCartBloc(),
           ),
         ],
         child: MaterialApp(

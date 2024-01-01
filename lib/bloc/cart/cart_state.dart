@@ -8,4 +8,5 @@ class CartState with _$CartState {
   const factory CartState.error() = _Error;
   const factory CartState.deleted(DeleteCartResponseModel data) = _Deleted;
   const factory CartState.errorDelete(String message) = _ErrorDelete;
+  const factory CartState.count(CountMyCartResponseModel data) = _Count;
 }

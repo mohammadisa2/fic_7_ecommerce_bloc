@@ -31,24 +31,6 @@ class CartProductView extends StatefulWidget {
                       ),
                     ),
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.black38,
-                    child: Badge(
-                      backgroundColor: Colors.black,
-                      offset: const Offset(-5, 2),
-                      label: const Text(
-                        "4",
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
               const SizedBox(
@@ -242,6 +224,9 @@ class CartProductView extends StatefulWidget {
                                                   context.read<CartBloc>().add(
                                                       CartEvent.deleteCart(
                                                           request));
+                                                  context.read<CartBloc>().add(
+                                                      const CartEvent
+                                                          .countMyCart());
                                                 },
                                                 child: CircleAvatar(
                                                   radius: 16.0,

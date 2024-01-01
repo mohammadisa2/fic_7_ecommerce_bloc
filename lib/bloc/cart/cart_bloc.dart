@@ -1,4 +1,5 @@
-import 'package:bloc/bloc.dart';
+import 'package:fic_7_ecommerce/data/models/response/count_my_cart_response_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fic_7_ecommerce/data/models/request/cart_request_model.dart';
 import 'package:fic_7_ecommerce/data/models/response/cart_response_model.dart';
 import 'package:fic_7_ecommerce/data/models/response/delete_cart_response_model.dart';
@@ -28,6 +29,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       response.fold(
         (l) => emit(_ErrorDelete(l)),
         (r) => emit(_Deleted(r)),
+      );
+    });
+
+    on<_CountMyCart>((event, emit) async {
+      emit(const _Loading());
+      final result = await CartRemoteDatasource().getCountMyCart();
+      result.fold(
+        (l) => emit(const _Error()),
+        (r) => emit(_Count(r)),
       );
     });
   }

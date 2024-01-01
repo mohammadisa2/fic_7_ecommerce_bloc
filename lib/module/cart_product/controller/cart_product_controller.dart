@@ -13,6 +13,7 @@ class CartProductController extends State<CartProductView> {
     instance = this;
     super.initState();
     context.read<CartBloc>().add(const CartEvent.fecthMyCart());
+    context.read<CartBloc>().add(const CartEvent.countMyCart());
   }
 
   @override

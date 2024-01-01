@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fic_7_ecommerce/data/datasources/review_remote_datasource.dart';
 import 'package:fic_7_ecommerce/data/models/request/review_request_model.dart';
 import 'package:fic_7_ecommerce/data/models/response/add_review_response_model.dart';

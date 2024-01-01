@@ -20,6 +20,7 @@ mixin _$CartEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fecthMyCart,
+    required TResult Function() countMyCart,
     required TResult Function(CartRequestModel requestModel) deleteCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$CartEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fecthMyCart,
+    TResult? Function()? countMyCart,
     TResult? Function(CartRequestModel requestModel)? deleteCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$CartEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fecthMyCart,
+    TResult Function()? countMyCart,
     TResult Function(CartRequestModel requestModel)? deleteCart,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$CartEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FecthMyCart value) fecthMyCart,
+    required TResult Function(_CountMyCart value) countMyCart,
     required TResult Function(_DeleteCart value) deleteCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$CartEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FecthMyCart value)? fecthMyCart,
+    TResult? Function(_CountMyCart value)? countMyCart,
     TResult? Function(_DeleteCart value)? deleteCart,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$CartEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FecthMyCart value)? fecthMyCart,
+    TResult Function(_CountMyCart value)? countMyCart,
     TResult Function(_DeleteCart value)? deleteCart,
     required TResult orElse(),
   }) =>
@@ -119,6 +125,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fecthMyCart,
+    required TResult Function() countMyCart,
     required TResult Function(CartRequestModel requestModel) deleteCart,
   }) {
     return started();
@@ -129,6 +136,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fecthMyCart,
+    TResult? Function()? countMyCart,
     TResult? Function(CartRequestModel requestModel)? deleteCart,
   }) {
     return started?.call();
@@ -139,6 +147,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fecthMyCart,
+    TResult Function()? countMyCart,
     TResult Function(CartRequestModel requestModel)? deleteCart,
     required TResult orElse(),
   }) {
@@ -153,6 +162,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FecthMyCart value) fecthMyCart,
+    required TResult Function(_CountMyCart value) countMyCart,
     required TResult Function(_DeleteCart value) deleteCart,
   }) {
     return started(this);
@@ -163,6 +173,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FecthMyCart value)? fecthMyCart,
+    TResult? Function(_CountMyCart value)? countMyCart,
     TResult? Function(_DeleteCart value)? deleteCart,
   }) {
     return started?.call(this);
@@ -173,6 +184,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FecthMyCart value)? fecthMyCart,
+    TResult Function(_CountMyCart value)? countMyCart,
     TResult Function(_DeleteCart value)? deleteCart,
     required TResult orElse(),
   }) {
@@ -227,6 +239,7 @@ class _$FecthMyCartImpl implements _FecthMyCart {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fecthMyCart,
+    required TResult Function() countMyCart,
     required TResult Function(CartRequestModel requestModel) deleteCart,
   }) {
     return fecthMyCart();
@@ -237,6 +250,7 @@ class _$FecthMyCartImpl implements _FecthMyCart {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fecthMyCart,
+    TResult? Function()? countMyCart,
     TResult? Function(CartRequestModel requestModel)? deleteCart,
   }) {
     return fecthMyCart?.call();
@@ -247,6 +261,7 @@ class _$FecthMyCartImpl implements _FecthMyCart {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fecthMyCart,
+    TResult Function()? countMyCart,
     TResult Function(CartRequestModel requestModel)? deleteCart,
     required TResult orElse(),
   }) {
@@ -261,6 +276,7 @@ class _$FecthMyCartImpl implements _FecthMyCart {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FecthMyCart value) fecthMyCart,
+    required TResult Function(_CountMyCart value) countMyCart,
     required TResult Function(_DeleteCart value) deleteCart,
   }) {
     return fecthMyCart(this);
@@ -271,6 +287,7 @@ class _$FecthMyCartImpl implements _FecthMyCart {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FecthMyCart value)? fecthMyCart,
+    TResult? Function(_CountMyCart value)? countMyCart,
     TResult? Function(_DeleteCart value)? deleteCart,
   }) {
     return fecthMyCart?.call(this);
@@ -281,6 +298,7 @@ class _$FecthMyCartImpl implements _FecthMyCart {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FecthMyCart value)? fecthMyCart,
+    TResult Function(_CountMyCart value)? countMyCart,
     TResult Function(_DeleteCart value)? deleteCart,
     required TResult orElse(),
   }) {
@@ -293,6 +311,120 @@ class _$FecthMyCartImpl implements _FecthMyCart {
 
 abstract class _FecthMyCart implements CartEvent {
   const factory _FecthMyCart() = _$FecthMyCartImpl;
+}
+
+/// @nodoc
+abstract class _$$CountMyCartImplCopyWith<$Res> {
+  factory _$$CountMyCartImplCopyWith(
+          _$CountMyCartImpl value, $Res Function(_$CountMyCartImpl) then) =
+      __$$CountMyCartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CountMyCartImplCopyWithImpl<$Res>
+    extends _$CartEventCopyWithImpl<$Res, _$CountMyCartImpl>
+    implements _$$CountMyCartImplCopyWith<$Res> {
+  __$$CountMyCartImplCopyWithImpl(
+      _$CountMyCartImpl _value, $Res Function(_$CountMyCartImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CountMyCartImpl implements _CountMyCart {
+  const _$CountMyCartImpl();
+
+  @override
+  String toString() {
+    return 'CartEvent.countMyCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CountMyCartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() fecthMyCart,
+    required TResult Function() countMyCart,
+    required TResult Function(CartRequestModel requestModel) deleteCart,
+  }) {
+    return countMyCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? fecthMyCart,
+    TResult? Function()? countMyCart,
+    TResult? Function(CartRequestModel requestModel)? deleteCart,
+  }) {
+    return countMyCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? fecthMyCart,
+    TResult Function()? countMyCart,
+    TResult Function(CartRequestModel requestModel)? deleteCart,
+    required TResult orElse(),
+  }) {
+    if (countMyCart != null) {
+      return countMyCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FecthMyCart value) fecthMyCart,
+    required TResult Function(_CountMyCart value) countMyCart,
+    required TResult Function(_DeleteCart value) deleteCart,
+  }) {
+    return countMyCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FecthMyCart value)? fecthMyCart,
+    TResult? Function(_CountMyCart value)? countMyCart,
+    TResult? Function(_DeleteCart value)? deleteCart,
+  }) {
+    return countMyCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FecthMyCart value)? fecthMyCart,
+    TResult Function(_CountMyCart value)? countMyCart,
+    TResult Function(_DeleteCart value)? deleteCart,
+    required TResult orElse(),
+  }) {
+    if (countMyCart != null) {
+      return countMyCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CountMyCart implements CartEvent {
+  const factory _CountMyCart() = _$CountMyCartImpl;
 }
 
 /// @nodoc
@@ -362,6 +494,7 @@ class _$DeleteCartImpl implements _DeleteCart {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() fecthMyCart,
+    required TResult Function() countMyCart,
     required TResult Function(CartRequestModel requestModel) deleteCart,
   }) {
     return deleteCart(requestModel);
@@ -372,6 +505,7 @@ class _$DeleteCartImpl implements _DeleteCart {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? fecthMyCart,
+    TResult? Function()? countMyCart,
     TResult? Function(CartRequestModel requestModel)? deleteCart,
   }) {
     return deleteCart?.call(requestModel);
@@ -382,6 +516,7 @@ class _$DeleteCartImpl implements _DeleteCart {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? fecthMyCart,
+    TResult Function()? countMyCart,
     TResult Function(CartRequestModel requestModel)? deleteCart,
     required TResult orElse(),
   }) {
@@ -396,6 +531,7 @@ class _$DeleteCartImpl implements _DeleteCart {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FecthMyCart value) fecthMyCart,
+    required TResult Function(_CountMyCart value) countMyCart,
     required TResult Function(_DeleteCart value) deleteCart,
   }) {
     return deleteCart(this);
@@ -406,6 +542,7 @@ class _$DeleteCartImpl implements _DeleteCart {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FecthMyCart value)? fecthMyCart,
+    TResult? Function(_CountMyCart value)? countMyCart,
     TResult? Function(_DeleteCart value)? deleteCart,
   }) {
     return deleteCart?.call(this);
@@ -416,6 +553,7 @@ class _$DeleteCartImpl implements _DeleteCart {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FecthMyCart value)? fecthMyCart,
+    TResult Function(_CountMyCart value)? countMyCart,
     TResult Function(_DeleteCart value)? deleteCart,
     required TResult orElse(),
   }) {
@@ -446,6 +584,7 @@ mixin _$CartState {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -456,6 +595,7 @@ mixin _$CartState {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -466,6 +606,7 @@ mixin _$CartState {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -477,6 +618,7 @@ mixin _$CartState {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -487,6 +629,7 @@ mixin _$CartState {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -497,6 +640,7 @@ mixin _$CartState {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -563,6 +707,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) {
     return initial();
   }
@@ -576,6 +721,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) {
     return initial?.call();
   }
@@ -589,6 +735,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -606,6 +753,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) {
     return initial(this);
   }
@@ -619,6 +767,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) {
     return initial?.call(this);
   }
@@ -632,6 +781,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -689,6 +839,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) {
     return loading();
   }
@@ -702,6 +853,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) {
     return loading?.call();
   }
@@ -715,6 +867,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -732,6 +885,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) {
     return loading(this);
   }
@@ -745,6 +899,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) {
     return loading?.call(this);
   }
@@ -758,6 +913,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -842,6 +998,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) {
     return loaded(response);
   }
@@ -855,6 +1012,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) {
     return loaded?.call(response);
   }
@@ -868,6 +1026,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -885,6 +1044,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) {
     return loaded(this);
   }
@@ -898,6 +1058,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) {
     return loaded?.call(this);
   }
@@ -911,6 +1072,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -973,6 +1135,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) {
     return error();
   }
@@ -986,6 +1149,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) {
     return error?.call();
   }
@@ -999,6 +1163,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1016,6 +1181,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) {
     return error(this);
   }
@@ -1029,6 +1195,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) {
     return error?.call(this);
   }
@@ -1042,6 +1209,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1125,6 +1293,7 @@ class _$DeletedImpl implements _Deleted {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) {
     return deleted(data);
   }
@@ -1138,6 +1307,7 @@ class _$DeletedImpl implements _Deleted {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) {
     return deleted?.call(data);
   }
@@ -1151,6 +1321,7 @@ class _$DeletedImpl implements _Deleted {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) {
     if (deleted != null) {
@@ -1168,6 +1339,7 @@ class _$DeletedImpl implements _Deleted {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) {
     return deleted(this);
   }
@@ -1181,6 +1353,7 @@ class _$DeletedImpl implements _Deleted {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) {
     return deleted?.call(this);
   }
@@ -1194,6 +1367,7 @@ class _$DeletedImpl implements _Deleted {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (deleted != null) {
@@ -1282,6 +1456,7 @@ class _$ErrorDeleteImpl implements _ErrorDelete {
     required TResult Function() error,
     required TResult Function(DeleteCartResponseModel data) deleted,
     required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
   }) {
     return errorDelete(message);
   }
@@ -1295,6 +1470,7 @@ class _$ErrorDeleteImpl implements _ErrorDelete {
     TResult? Function()? error,
     TResult? Function(DeleteCartResponseModel data)? deleted,
     TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
   }) {
     return errorDelete?.call(message);
   }
@@ -1308,6 +1484,7 @@ class _$ErrorDeleteImpl implements _ErrorDelete {
     TResult Function()? error,
     TResult Function(DeleteCartResponseModel data)? deleted,
     TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
     required TResult orElse(),
   }) {
     if (errorDelete != null) {
@@ -1325,6 +1502,7 @@ class _$ErrorDeleteImpl implements _ErrorDelete {
     required TResult Function(_Error value) error,
     required TResult Function(_Deleted value) deleted,
     required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
   }) {
     return errorDelete(this);
   }
@@ -1338,6 +1516,7 @@ class _$ErrorDeleteImpl implements _ErrorDelete {
     TResult? Function(_Error value)? error,
     TResult? Function(_Deleted value)? deleted,
     TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
   }) {
     return errorDelete?.call(this);
   }
@@ -1351,6 +1530,7 @@ class _$ErrorDeleteImpl implements _ErrorDelete {
     TResult Function(_Error value)? error,
     TResult Function(_Deleted value)? deleted,
     TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
     required TResult orElse(),
   }) {
     if (errorDelete != null) {
@@ -1366,5 +1546,168 @@ abstract class _ErrorDelete implements CartState {
   String get message;
   @JsonKey(ignore: true)
   _$$ErrorDeleteImplCopyWith<_$ErrorDeleteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CountImplCopyWith<$Res> {
+  factory _$$CountImplCopyWith(
+          _$CountImpl value, $Res Function(_$CountImpl) then) =
+      __$$CountImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CountMyCartResponseModel data});
+}
+
+/// @nodoc
+class __$$CountImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CountImpl>
+    implements _$$CountImplCopyWith<$Res> {
+  __$$CountImplCopyWithImpl(
+      _$CountImpl _value, $Res Function(_$CountImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$CountImpl(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as CountMyCartResponseModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CountImpl implements _Count {
+  const _$CountImpl(this.data);
+
+  @override
+  final CountMyCartResponseModel data;
+
+  @override
+  String toString() {
+    return 'CartState.count(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CountImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CountImplCopyWith<_$CountImpl> get copyWith =>
+      __$$CountImplCopyWithImpl<_$CountImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(CartResponseModel response) loaded,
+    required TResult Function() error,
+    required TResult Function(DeleteCartResponseModel data) deleted,
+    required TResult Function(String message) errorDelete,
+    required TResult Function(CountMyCartResponseModel data) count,
+  }) {
+    return count(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(CartResponseModel response)? loaded,
+    TResult? Function()? error,
+    TResult? Function(DeleteCartResponseModel data)? deleted,
+    TResult? Function(String message)? errorDelete,
+    TResult? Function(CountMyCartResponseModel data)? count,
+  }) {
+    return count?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(CartResponseModel response)? loaded,
+    TResult Function()? error,
+    TResult Function(DeleteCartResponseModel data)? deleted,
+    TResult Function(String message)? errorDelete,
+    TResult Function(CountMyCartResponseModel data)? count,
+    required TResult orElse(),
+  }) {
+    if (count != null) {
+      return count(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Deleted value) deleted,
+    required TResult Function(_ErrorDelete value) errorDelete,
+    required TResult Function(_Count value) count,
+  }) {
+    return count(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Deleted value)? deleted,
+    TResult? Function(_ErrorDelete value)? errorDelete,
+    TResult? Function(_Count value)? count,
+  }) {
+    return count?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Deleted value)? deleted,
+    TResult Function(_ErrorDelete value)? errorDelete,
+    TResult Function(_Count value)? count,
+    required TResult orElse(),
+  }) {
+    if (count != null) {
+      return count(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Count implements CartState {
+  const factory _Count(final CountMyCartResponseModel data) = _$CountImpl;
+
+  CountMyCartResponseModel get data;
+  @JsonKey(ignore: true)
+  _$$CountImplCopyWith<_$CountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

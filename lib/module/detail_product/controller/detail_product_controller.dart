@@ -1,3 +1,4 @@
+import 'package:fic_7_ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/product_details/product_details_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
@@ -23,6 +24,7 @@ class DetailProductController extends State<DetailProductView> {
 
     _mustReviewBloc = context.read<MustReviewBloc>();
     _mustReviewBloc.add(MustReviewEvent.mustReview(widget.productId));
+    context.read<CartBloc>().add(const CartEvent.countMyCart());
 
     super.initState();
   }
