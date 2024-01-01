@@ -129,7 +129,9 @@ class LoginView extends StatefulWidget {
                               if (data.user.role == 'user') {
                                 Navigator.pushReplacement(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return const MainNavigationView();
+                                  return MainNavigationView(
+                                    initialIndex: 0,
+                                  );
                                 }));
                               } else {
                                 Navigator.pushReplacement(context,

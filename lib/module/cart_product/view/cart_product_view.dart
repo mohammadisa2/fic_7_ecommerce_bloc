@@ -1,12 +1,19 @@
-import 'package:fic_7_ecommerce/bloc/cart/cart_bloc.dart';
-import 'package:fic_7_ecommerce/data/models/request/cart_request_model.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:fic_7_ecommerce/bloc/cart/cart_bloc.dart';
+import 'package:fic_7_ecommerce/core.dart';
+import 'package:fic_7_ecommerce/data/models/request/cart_request_model.dart';
+
 import '../controller/cart_product_controller.dart';
 
 class CartProductView extends StatefulWidget {
-  const CartProductView({Key? key}) : super(key: key);
+  final String originPage;
+  const CartProductView({
+    Key? key,
+    required this.originPage,
+  }) : super(key: key);
 
   Widget build(context, CartProductController controller) {
     controller.view = this;
@@ -23,7 +30,27 @@ class CartProductView extends StatefulWidget {
                   CircleAvatar(
                     backgroundColor: Colors.black38,
                     child: IconButton(
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {
+                        if (originPage == 'wishlist-view') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainNavigationView(
+                                initialIndex: 2,
+                              ),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainNavigationView(
+                                initialIndex: 0,
+                              ),
+                            ),
+                          );
+                        }
+                      },
                       icon: const Icon(
                         Icons.arrow_back,
                         size: 24.0,

@@ -1,3 +1,4 @@
+import 'package:fic_7_ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/my_favorite_product/my_favorite_product_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
@@ -15,6 +16,7 @@ class WishlistController extends State<WishlistView> {
     context
         .read<MyFavoriteProductBloc>()
         .add(const MyFavoriteProductEvent.fetchMyFavProd());
+    context.read<CartBloc>().add(const CartEvent.countMyCart());
   }
 
   @override

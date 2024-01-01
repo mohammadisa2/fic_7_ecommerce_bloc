@@ -71,7 +71,9 @@ class MyApp extends StatelessWidget {
                   if (snapshot.data?.role == "admin") {
                     return const MainNavigationSellerView();
                   } else if (snapshot.data?.role == "user") {
-                    return const MainNavigationView();
+                    return MainNavigationView(
+                      initialIndex: 0,
+                    );
                   } else {
                     return const LoginView();
                   }

@@ -115,8 +115,9 @@ class RegisterView extends StatefulWidget {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MainNavigationView(),
+                                  builder: (context) => MainNavigationView(
+                                    initialIndex: 0,
+                                  ),
                                 ),
                               );
                             },

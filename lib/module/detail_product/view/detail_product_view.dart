@@ -46,50 +46,6 @@ class DetailProductView extends StatefulWidget {
             ),
           ),
         ),
-        actions: [
-          BlocBuilder<CartBloc, CartState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                orElse: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-                loading: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-                count: (data) {
-                  return CircleAvatar(
-                    radius: 30.0,
-                    backgroundColor: Colors.black38,
-                    child: Badge(
-                      backgroundColor: Colors.black,
-                      offset: const Offset(-5, 2),
-                      label: Text(
-                        "${data.cartCount}",
-                      ),
-                      child: IconButton(
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CartProductView(),
-                          ),
-                        ),
-                        icon: const Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white,
-                          size: 24.0,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
-          ),
-        ],
       ),
       body: RefreshIndicator(
         backgroundColor: Colors.white,

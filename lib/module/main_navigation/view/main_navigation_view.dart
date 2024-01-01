@@ -1,13 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/my_orders/my_orders_bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../bloc/add_favorite_product/add_favorite_product_bloc.dart';
 import '../controller/main_navigation_controller.dart';
 
+// ignore: must_be_immutable
 class MainNavigationView extends StatefulWidget {
-  const MainNavigationView({Key? key}) : super(key: key);
+  int? initialIndex;
+  MainNavigationView({
+    Key? key,
+    this.initialIndex,
+  }) : super(key: key);
 
   Widget build(context, MainNavigationController controller) {
     controller.view = this;
@@ -21,10 +28,10 @@ class MainNavigationView extends StatefulWidget {
     */
     return DefaultTabController(
       length: 4,
-      initialIndex: controller.selectedIndex,
+      initialIndex: initialIndex ?? 0,
       child: Scaffold(
         body: IndexedStack(
-          index: controller.selectedIndex,
+          index: initialIndex ?? 0,
           children: [
             MultiBlocProvider(
               providers: [
@@ -48,7 +55,7 @@ class MainNavigationView extends StatefulWidget {
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           selectedItemColor: Colors.black,
-          currentIndex: controller.selectedIndex,
+          currentIndex: initialIndex ?? 0,
           onTap: (newIndex) => controller.updateIndex(newIndex),
           type: BottomNavigationBarType.fixed,
           items: const [

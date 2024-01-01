@@ -3,6 +3,7 @@ import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/cart/cart_bloc.dart';
 import '../../../bloc/categories/categories_bloc.dart';
 import '../../../bloc/products/products_bloc.dart';
 import '../view/dashboard_view.dart';
@@ -25,6 +26,7 @@ class DashboardController extends State<DashboardView> {
     context.read<CategoriesBloc>().add(const CategoriesEvent.getCategories());
     context.read<ProductsBloc>().add(const ProductsEvent.getAll());
     context.read<BannersBloc>().add(const BannersEvent.getBanners());
+    context.read<CartBloc>().add(const CartEvent.countMyCart());
     super.initState();
   }
 

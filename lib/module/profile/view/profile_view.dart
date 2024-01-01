@@ -18,33 +18,6 @@ class ProfileView extends StatefulWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.black,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          size: 24.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    const Spacer(),
-                    CircleAvatar(
-                      backgroundColor: Colors.black,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.settings,
-                          size: 24.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 const SizedBox(
                   height: 20.0,
                 ),

@@ -6,6 +6,7 @@ import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/add_review/add_review_bloc.dart';
 import '../../../bloc/banners/banners_bloc.dart';
+import '../../../bloc/cart/cart_bloc.dart';
 import '../../../bloc/categories/categories_bloc.dart';
 import '../../../bloc/must_review/must_review_bloc.dart';
 import '../../../bloc/my_favorite_product/my_favorite_product_bloc.dart';
@@ -44,28 +45,6 @@ class DashboardView extends StatefulWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 20.0,
-                            ),
-                            const Text(
-                              "Welcome Isa,",
-                              style: TextStyle(
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 8.0,
-                            ),
-                            const Text(
-                              "Our (Brand name) App ",
-                              style: TextStyle(
-                                fontSize: 24.0,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20.0,
-                            ),
                             Row(
                               children: [
                                 Expanded(
@@ -98,15 +77,51 @@ class DashboardView extends StatefulWidget {
                                 const SizedBox(
                                   width: 8.0,
                                 ),
-                                CircleAvatar(
-                                  backgroundColor: Colors.black,
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.tune,
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                                BlocBuilder<CartBloc, CartState>(
+                                  builder: (context, state) {
+                                    return state.maybeWhen(
+                                      orElse: () {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      },
+                                      loading: () {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      },
+                                      count: (data) {
+                                        return CircleAvatar(
+                                          radius: 24.0,
+                                          backgroundColor: Colors.black38,
+                                          child: Badge(
+                                            backgroundColor: Colors.black,
+                                            offset: const Offset(-5, 5),
+                                            label: Text(
+                                              "${data.cartCount}",
+                                            ),
+                                            child: IconButton(
+                                              onPressed: () => Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const CartProductView(
+                                                    originPage:
+                                                        "dashboard-view",
+                                                  ),
+                                                ),
+                                              ),
+                                              icon: const Icon(
+                                                Icons.shopping_cart_outlined,
+                                                color: Colors.white,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ],
                             ),

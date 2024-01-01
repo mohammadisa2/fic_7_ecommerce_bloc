@@ -17,9 +17,8 @@ class MainNavigationController extends State<MainNavigationView> {
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
-  int selectedIndex = 0;
   updateIndex(int newIndex) {
-    selectedIndex = newIndex;
+    widget.initialIndex = newIndex;
     setState(() {});
   }
 }

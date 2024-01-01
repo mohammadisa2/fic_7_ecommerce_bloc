@@ -57,7 +57,6 @@ class Product {
   final int price;
   final String imageProduct;
   final Category category;
-  final List<Review> reviews;
   final bool isWishlist;
 
   Product({
@@ -67,7 +66,6 @@ class Product {
     required this.price,
     required this.imageProduct,
     required this.category,
-    required this.reviews,
     required this.isWishlist,
   });
 
@@ -82,8 +80,6 @@ class Product {
         price: json["price"],
         imageProduct: json["image_product"],
         category: Category.fromMap(json["category"]),
-        reviews:
-            List<Review>.from(json["reviews"].map((x) => Review.fromMap(x))),
         isWishlist: json["is_wishlist"],
       );
 
@@ -94,7 +90,6 @@ class Product {
         "price": price,
         "image_product": imageProduct,
         "category": category.toMap(),
-        "reviews": List<dynamic>.from(reviews.map((x) => x.toMap())),
         "is_wishlist": isWishlist,
       };
 }

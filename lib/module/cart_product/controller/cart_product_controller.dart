@@ -7,13 +7,15 @@ import '../view/cart_product_view.dart';
 class CartProductController extends State<CartProductView> {
   static late CartProductController instance;
   late CartProductView view;
+  MainNavigationController? getMainNavigationController() {
+    return MainNavigationController.instance;
+  }
 
   @override
   void initState() {
     instance = this;
     super.initState();
     context.read<CartBloc>().add(const CartEvent.fecthMyCart());
-    context.read<CartBloc>().add(const CartEvent.countMyCart());
   }
 
   @override
