@@ -40,7 +40,12 @@ class CategoryProductView extends StatefulWidget {
                   CircleAvatar(
                     backgroundColor: Colors.black,
                     child: IconButton(
-                      onPressed: () => Navigator.pop(context),
+                      onPressed: () {
+                        context
+                            .read<ProductsBloc>()
+                            .add(const ProductsEvent.refresh());
+                        Navigator.pop(context);
+                      },
                       icon: const Icon(
                         Icons.arrow_back,
                         size: 24.0,

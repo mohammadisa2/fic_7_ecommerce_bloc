@@ -5,6 +5,7 @@ import 'package:fic_7_ecommerce/core/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/cart/cart_bloc.dart';
 import 'bloc/categories/categories_bloc.dart';
 import 'bloc/login/login_bloc.dart';
 import 'bloc/logout/logout_bloc.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => AddFavoriteProductBloc(),
+          ),
+          BlocProvider(
+            create: (context) => CartBloc(),
           ),
         ],
         child: MaterialApp(
