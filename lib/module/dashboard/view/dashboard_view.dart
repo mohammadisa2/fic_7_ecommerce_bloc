@@ -4,6 +4,7 @@ import 'package:fic_7_ecommerce/data/models/request/add_favorite_product_request
 import 'package:flutter/material.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/add_cart/add_cart_bloc.dart';
 import '../../../bloc/add_review/add_review_bloc.dart';
 import '../../../bloc/banners/banners_bloc.dart';
 import '../../../bloc/cart/cart_bloc.dart';
@@ -414,6 +415,10 @@ class DashboardView extends StatefulWidget {
                                                         MustReviewBloc>(
                                                       create: (context) =>
                                                           MustReviewBloc(),
+                                                    ),
+                                                    BlocProvider(
+                                                      create: (context) =>
+                                                          AddCartBloc(),
                                                     ),
                                                   ],
                                                   child: DetailProductView(

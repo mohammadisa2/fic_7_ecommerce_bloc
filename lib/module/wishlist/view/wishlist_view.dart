@@ -229,8 +229,8 @@ class WishlistView extends StatefulWidget {
                                                     final AddCartRequestModel
                                                         requestModel =
                                                         AddCartRequestModel(
-                                                            productId:
-                                                                item.id!);
+                                                            productId: item
+                                                                .productId!);
 
                                                     context
                                                         .read<AddCartBloc>()

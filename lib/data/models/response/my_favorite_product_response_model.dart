@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class MyFavoriteProductResponseModel {
@@ -31,6 +32,7 @@ class Favorite {
   String? name;
   String? description;
   int? price;
+  int? productId;
   String? imageProduct;
   Category? category;
   Seller? seller;
@@ -40,6 +42,7 @@ class Favorite {
     this.name,
     this.description,
     this.price,
+    this.productId,
     this.imageProduct,
     this.category,
     this.seller,
@@ -54,6 +57,7 @@ class Favorite {
         name: json["name"],
         description: json["description"],
         price: json["price"],
+        productId: json["product_id"],
         imageProduct: json["image_product"],
         category: json["category"] == null
             ? null

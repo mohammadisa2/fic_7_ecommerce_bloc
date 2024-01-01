@@ -5,6 +5,7 @@ import 'package:fic_7_ecommerce/bloc/banners/banners_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/my_orders/my_orders_bloc.dart';
 import 'package:fic_7_ecommerce/core.dart';
 
+import '../../../bloc/add_cart/add_cart_bloc.dart';
 import '../../../bloc/add_favorite_product/add_favorite_product_bloc.dart';
 import '../controller/main_navigation_controller.dart';
 
@@ -48,7 +49,10 @@ class MainNavigationView extends StatefulWidget {
               create: (context) => MyOrdersBloc(),
               child: const OrderDetailView(),
             ),
-            const WishlistView(),
+            BlocProvider(
+              create: (context) => AddCartBloc(),
+              child: const WishlistView(),
+            ),
             const ProfileView(),
           ],
         ),

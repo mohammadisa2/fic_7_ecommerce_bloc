@@ -285,23 +285,45 @@ class CartProductView extends StatefulWidget {
               const SizedBox(
                 height: 16.0,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Total (4 Item)",
-                    style: TextStyle(
-                      fontSize: 12.0,
-                    ),
-                  ),
-                  Text(
-                    "Rp.500.000",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loading: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loaded: (response) {
+                      int totalPriceSum = 0;
+                      for (var item in response.data) {
+                        totalPriceSum += item.product.price;
+                      }
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Total (${response.data.length} Item)",
+                            style: const TextStyle(
+                              fontSize: 12.0,
+                            ),
+                          ),
+                          Text(
+                            "Rp. $totalPriceSum",
+                            style: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
               const SizedBox(
                 height: 8.0,
