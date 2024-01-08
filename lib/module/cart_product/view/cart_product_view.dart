@@ -16,6 +16,7 @@ class CartProductView extends StatefulWidget {
   }) : super(key: key);
 
   Widget build(context, CartProductController controller) {
+    int totalPriceSum = 0;
     controller.view = this;
     return Scaffold(
       body: SafeArea(
@@ -299,7 +300,6 @@ class CartProductView extends StatefulWidget {
                       );
                     },
                     loaded: (response) {
-                      int totalPriceSum = 0;
                       for (var item in response.data) {
                         totalPriceSum += item.product.price;
                       }
@@ -332,7 +332,9 @@ class CartProductView extends StatefulWidget {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CheckoutProductView()),
+                      builder: (context) => CheckoutProductView(
+                            subPrice: totalPriceSum,
+                          )),
                 ),
                 child: Container(
                   height: 50,

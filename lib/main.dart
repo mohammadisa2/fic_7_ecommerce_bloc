@@ -1,10 +1,12 @@
 import 'package:fic_7_ecommerce/bloc/add_favorite_product/add_favorite_product_bloc.dart';
 import 'package:fic_7_ecommerce/bloc/my_favorite_product/my_favorite_product_bloc.dart';
+import 'package:fic_7_ecommerce/bloc/order/order_bloc.dart';
 import 'package:fic_7_ecommerce/core.dart';
 import 'package:fic_7_ecommerce/core/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/add_review/add_review_bloc.dart';
 import 'bloc/cart/cart_bloc.dart';
 import 'bloc/categories/categories_bloc.dart';
 import 'bloc/login/login_bloc.dart';
@@ -47,6 +49,12 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => CartBloc(),
+          ),
+          BlocProvider(
+            create: (context) => AddReviewBloc(),
+          ),
+          BlocProvider(
+            create: (context) => OrderBloc(),
           ),
         ],
         child: MaterialApp(

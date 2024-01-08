@@ -7,6 +7,7 @@ import 'package:fic_7_ecommerce/core.dart';
 
 import '../../../bloc/add_cart/add_cart_bloc.dart';
 import '../../../bloc/add_favorite_product/add_favorite_product_bloc.dart';
+import '../../../bloc/add_review/add_review_bloc.dart';
 import '../controller/main_navigation_controller.dart';
 
 // ignore: must_be_immutable

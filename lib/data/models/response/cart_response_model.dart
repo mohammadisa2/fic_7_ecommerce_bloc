@@ -57,6 +57,8 @@ class Product {
   final int price;
   final String imageProduct;
   final Category category;
+  final Seller seller;
+  final List<Review> reviews;
   final bool isWishlist;
 
   Product({
@@ -66,6 +68,8 @@ class Product {
     required this.price,
     required this.imageProduct,
     required this.category,
+    required this.seller,
+    required this.reviews,
     required this.isWishlist,
   });
 
@@ -80,6 +84,9 @@ class Product {
         price: json["price"],
         imageProduct: json["image_product"],
         category: Category.fromMap(json["category"]),
+        seller: Seller.fromMap(json["seller"]),
+        reviews:
+            List<Review>.from(json["reviews"].map((x) => Review.fromMap(x))),
         isWishlist: json["is_wishlist"],
       );
 
@@ -90,6 +97,8 @@ class Product {
         "price": price,
         "image_product": imageProduct,
         "category": category.toMap(),
+        "seller": seller.toMap(),
+        "reviews": List<dynamic>.from(reviews.map((x) => x.toMap())),
         "is_wishlist": isWishlist,
       };
 }
@@ -134,7 +143,7 @@ class Review {
   final int id;
   final String comment;
   final double rating;
-  final User user;
+  final Seller user;
 
   Review({
     required this.id,
@@ -151,7 +160,7 @@ class Review {
         id: json["id"],
         comment: json["comment"],
         rating: json["rating"].toDouble(),
-        user: User.fromMap(json["user"]),
+        user: Seller.fromMap(json["user"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -162,22 +171,22 @@ class Review {
       };
 }
 
-class User {
+class Seller {
   final int id;
   final String name;
   final String role;
 
-  User({
+  Seller({
     required this.id,
     required this.name,
     required this.role,
   });
 
-  factory User.fromJson(String str) => User.fromMap(json.decode(str));
+  factory Seller.fromJson(String str) => Seller.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromMap(Map<String, dynamic> json) => User(
+  factory Seller.fromMap(Map<String, dynamic> json) => Seller(
         id: json["id"],
         name: json["name"],
         role: json["role"],

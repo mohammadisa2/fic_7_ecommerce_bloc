@@ -1,11 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:fic_7_ecommerce/core.dart';
+
+import '../../../bloc/cart/cart_bloc.dart';
+import '../../../bloc/order/order_bloc.dart';
 import '../../../core/radio.dart';
 import '../../../core/validator.dart';
+import '../../../data/models/request/order_request_model.dart';
 import '../controller/checkout_product_controller.dart';
+import '../widget/payment_page.dart';
 
 class CheckoutProductView extends StatefulWidget {
-  const CheckoutProductView({Key? key}) : super(key: key);
+  final int subPrice;
+  const CheckoutProductView({
+    Key? key,
+    required this.subPrice,
+  }) : super(key: key);
 
   Widget build(context, CheckoutProductController controller) {
     controller.view = this;
@@ -71,104 +83,133 @@ class CheckoutProductView extends StatefulWidget {
               const SizedBox(
                 height: 12.0,
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  physics: const ScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    // var item = {};
-                    return Container(
-                      padding: const EdgeInsets.all(12.0),
-                      margin: const EdgeInsets.all(8.0),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x19000000),
-                            blurRadius: 24,
-                            offset: Offset(0, 11),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            8.0,
-                          ),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loading: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loaded: (response) {
+                      controller.items = response.data
+                          .map(
+                            (e) => Item(
+                              id: e.product.id,
+                              quantity: 1,
+                              sellerId: e.product.seller.id,
+                              subPrice: e.product.price,
+                            ),
+                          )
+                          .toList();
+                      return Expanded(
+                        child: ListView.builder(
+                          itemCount: response.data.length,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: const ScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            var item = response.data[index];
+                            return Container(
+                              padding: const EdgeInsets.all(12.0),
+                              margin: const EdgeInsets.all(8.0),
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x19000000),
+                                    blurRadius: 24,
+                                    offset: Offset(0, 11),
+                                  ),
+                                ],
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(
+                                    8.0,
+                                  ),
+                                ),
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 96,
+                                    height: 96,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          item.product.imageProduct,
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(
+                                          8.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 12.0,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          item.product.name,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 6.0,
+                                        ),
+                                        Text(
+                                          item.product.category.name,
+                                          style: const TextStyle(
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 6.0,
+                                        ),
+                                        Text(
+                                          "Rp. ${item.product.price}",
+                                          style: TextStyle(
+                                            fontSize: 14.0,
+                                            color: Colors.grey[600],
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 6.0,
+                                        ),
+                                        const Text(
+                                          "Quantity: 1",
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
                         ),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 96,
-                            height: 96,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  "https://images.unsplash.com/photo-1643681154051-c43090a0fadb?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(
-                                  8.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 12.0,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "Apple Smartwatch 9N Series",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 6.0,
-                                ),
-                                const Text(
-                                  "Smartwatch",
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 6.0,
-                                ),
-                                Text(
-                                  "1.00",
-                                  style: TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.grey[600],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 6.0,
-                                ),
-                                const Text(
-                                  "Quantity: 2",
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
@@ -212,11 +253,11 @@ class CheckoutProductView extends StatefulWidget {
             const SizedBox(
               width: 20.0,
             ),
-            const Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Total Price",
                   style: TextStyle(
                     fontSize: 12.0,
@@ -224,8 +265,8 @@ class CheckoutProductView extends StatefulWidget {
                   ),
                 ),
                 Text(
-                  "Rp. 1.000.000",
-                  style: TextStyle(
+                  "Rp. ${controller.subPrice}",
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -234,25 +275,67 @@ class CheckoutProductView extends StatefulWidget {
               ],
             ),
             const Spacer(),
-            Container(
-              height: 50,
-              width: 120,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(24.0),
-                ),
-                color: Colors.white,
-              ),
-              child: const Center(
-                child: Text(
-                  "Place Order",
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            BlocConsumer<OrderBloc, OrderState>(
+              listener: (context, state) {
+                state.maybeWhen(
+                  orElse: () {},
+                  loaded: (data) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return PaymentPage(
+                        url: data.data.paymentUrl,
+                        orderId: data.data.number,
+                      );
+                    }));
+                  },
+                );
+              },
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  error: (message) {
+                    return Text(message);
+                  },
+                  orElse: () {
+                    return Container(
+                      height: 50,
+                      width: 120,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(24.0),
+                        ),
+                        color: Colors.white,
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          final requestModel = OrderRequestModel(
+                            items: controller.items,
+                            totalPrice: controller.subPrice,
+                            deliveryAddress: "Test",
+                          );
+                          context
+                              .read<OrderBloc>()
+                              .add(OrderEvent.order(requestModel));
+                        },
+                        child: const Center(
+                          child: Text(
+                            "Place Order",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
             ),
           ],
         ),
